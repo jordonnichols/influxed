@@ -1,6 +1,6 @@
 {
   "extends": "next",
-  "plugins": ["simple-import-sort", "next/babel"],
+  "plugins": ["simple-import-sort"],
   "rules": {
     "simple-import-sort/imports": "warn",
     "simple-import-sort/exports": "warn",

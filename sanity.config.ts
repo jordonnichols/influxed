@@ -1,10 +1,4 @@
 import { visionTool } from '@sanity/vision'
-import {
-  apiVersion,
-  dataset,
-  previewSecretId,
-  projectId,
-} from 'src/lib/sanity.api'
 import { previewDocumentNode } from 'src/plugins/previewPane'
 import { productionUrl } from 'src/plugins/productionUrl'
 import { defineConfig } from 'sanity'
@@ -12,6 +6,12 @@ import { deskTool } from 'sanity/desk'
 import { unsplashImageAsset } from 'sanity-plugin-asset-source-unsplash'
 import authorType from 'src/schemas/author'
 import postType from 'src/schemas/post'
+import {
+  apiVersion,
+  dataset,
+  previewSecretId,
+  projectId,
+} from 'src/lib/sanity.api'
 
 const title =
   process.env.NEXT_PUBLIC_SANITY_PROJECT_TITLE || 'Next.js Blog with Sanity.io'
