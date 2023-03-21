@@ -18,9 +18,7 @@ const title =
 
 export default defineConfig({
   basePath: '/studio',
-  // @ts-expect-error
   projectId,
-  // @ts-expect-error
   dataset,
   title,
   schema: {
