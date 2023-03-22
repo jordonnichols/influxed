@@ -1,27 +1,26 @@
 'use client'
 import { OrbitControls, useCursor } from '@react-three/drei'
 import { Canvas, useFrame, useThree } from '@react-three/fiber'
-import { useEffect, useLayoutEffect,useMemo, useRef, useState } from 'react'
+import { useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react'
 import { Mesh } from 'three'
 import { AsciiEffect } from 'three-stdlib'
 
-export default function AsciiBouncingBall() {
+export default function AsciiObject() {
   return (
     <Canvas className="h-full w-full">
       <color attach="background" args={['black']} />
-      <spotLight position={[10, 10, 10]} angle={0.15} penumbra={1} />
+      <spotLight position={[10, 10, 10]} angle={20} penumbra={0} />
       <pointLight position={[-10, -10, -10]} />
-      <Torusknot />
+      <Knot />
       <OrbitControls />
       {/* @ts-expect-error */}
-      <AsciiRenderer fgColor="white" bgColor="black" />
+      <AsciiRenderer />
     </Canvas>
   )
 }
 
-function Torusknot(props) {
+function Knot(props) {
   const ref = useRef<Mesh>()
-  const [clicked, click] = useState(false)
   const [hovered, hover] = useState(false)
   useCursor(hovered)
   useFrame((state, delta) =>
@@ -33,25 +32,47 @@ function Torusknot(props) {
     <mesh
       {...props}
       ref={ref}
-      scale={clicked ? 1.5 : 1.25}
+      onPointerOver={() => hover(true)}
+      onPointerOut={() => hover(false)}
+    >
+      <torusKnotGeometry args={[1, 0.25, 128, 32]} />
+      <meshStandardMaterial color="orange" />
+    </mesh>
+  )
+}
+function SpinningBall(props) {
+  const ref = useRef<Mesh>()
+  const [clicked, click] = useState(false)
+  const [hovered, hover] = useState(false)
+  // useCursor(hovered)
+  useFrame((state, delta) => {
+    return ref.current
+      ? (ref.current.rotation.x = ref.current.rotation.y += delta / 2)
+      : undefined
+  })
+  return (
+    <mesh
+      {...props}
+      ref={ref}
+      scale={1.5}
       onClick={() => click(!clicked)}
       onPointerOver={() => hover(true)}
       onPointerOut={() => hover(false)}
     >
-      <torusKnotGeometry args={[1, 0.2, 128, 32]} />
-      <meshStandardMaterial color="orange" />
+      <sphereGeometry args={[1, 32, 32]} />
+      <meshStandardMaterial color="white" />
     </mesh>
   )
 }
 
 function AsciiRenderer({
   renderIndex = 1,
-  bgColor = 'black',
-  fgColor = 'white',
-  characters = ' .:-+*=%@#',
+  bgColor = '#111',
+  fgColor = '#ef4444',
+  characters = ' .:-+*=%@#$&',
   invert = true,
   color = false,
-  resolution = 0.15,
+  resolution = 0.175,
 }) {
   // Reactive state
   const { size, gl, scene, camera } = useThree()
