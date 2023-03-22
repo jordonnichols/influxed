@@ -1,5 +1,9 @@
 import HomePage from 'src/components/home'
 
 export default async function Page() {
-  return <HomePage />
+  return (
+    <div className="h-screen w-screen">
+      <HomePage />
+    </div>
+  )
 }

@@ -15,6 +15,8 @@
   },
   "dependencies": {
     "@portabletext/react": "2.0.2",
+    "@react-three/drei": "^9.58.1",
+    "@react-three/fiber": "^8.12.0",
     "@sanity/image-url": "1.0.2",
     "@sanity/preview-kit": "^1.3.6",
     "@sanity/vision": "3.7.0",
@@ -29,10 +31,12 @@
     "sanity": "3.7.0",
     "sanity-plugin-asset-source-unsplash": "1.0.6",
     "suspend-react": "0.0.9",
-    "swr": "2.1.0"
+    "swr": "2.1.0",
+    "three": "^0.150.1"
   },
   "devDependencies": {
     "@types/react": "^18.0.28",
+    "@types/three": "^0.149.0",
     "autoprefixer": "^10.4.14",
     "eslint": "^8.35.0",
     "eslint-config-next": "13.2.4",
