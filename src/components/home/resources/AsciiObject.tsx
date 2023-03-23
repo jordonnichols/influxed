@@ -12,7 +12,7 @@ export default function AsciiObject() {
       <spotLight position={[10, 10, 10]} angle={20} penumbra={0} />
       <pointLight position={[-10, -10, -10]} />
       <Knot />
-      <OrbitControls />
+      <OrbitControls enableZoom={false} enablePan={false} />
       {/* @ts-expect-error */}
       <AsciiRenderer />
     </Canvas>
@@ -21,20 +21,13 @@ export default function AsciiObject() {
 
 function Knot(props) {
   const ref = useRef<Mesh>()
-  const [hovered, hover] = useState(false)
-  useCursor(hovered)
   useFrame((state, delta) =>
     ref.current
       ? (ref.current.rotation.x = ref.current.rotation.y += delta / 2)
       : undefined
   )
   return (
-    <mesh
-      {...props}
-      ref={ref}
-      onPointerOver={() => hover(true)}
-      onPointerOut={() => hover(false)}
-    >
+    <mesh {...props} ref={ref}>
       <torusKnotGeometry args={[1, 0.25, 128, 32]} />
       <meshStandardMaterial color="orange" />
     </mesh>
