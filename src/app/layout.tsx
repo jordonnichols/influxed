@@ -3,6 +3,7 @@ import '../components/global/global.css'
 
 import Script from 'next/script'
 import ArrowPointer from 'src/components/global/Cursor'
+import CursorWrapper from 'src/components/global/Cursor'
 
 export const metadata = {
   title: 'influxed',
@@ -37,10 +38,9 @@ export default function RootLayout({
         <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
         <link rel="icon" href="/favicon.ico" />
       </head>
-      <body className="cursor-">
-        <ArrowPointer />
+      <CursorWrapper>
         <main>{children}</main>
-      </body>
+      </CursorWrapper>
     </html>
   )
 }
