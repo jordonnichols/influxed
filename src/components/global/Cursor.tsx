@@ -46,100 +46,100 @@ const CursorWrapper = ({ children }) => {
     }
   }, [])
 
-  const move = (event) => {
-    if (rootRef.current) {
-      const position = positionRef.current
-      position.distanceX =
-        previousPointerXRef.current -
-        (event.pageX + rootRef.current.getBoundingClientRect().x)
-      position.distanceY =
-        previousPointerYRef.current -
-        (event.pageY + rootRef.current.getBoundingClientRect().y)
-      position.pointerX =
-        event.pageX + rootRef.current.getBoundingClientRect().x
-      position.pointerY =
-        event.pageY + rootRef.current.getBoundingClientRect().y
-      position.distance = Math.sqrt(
-        position.distanceY ** 2 + position.distanceX ** 2
-      )
-      if (cursorRef.current) {
-        cursorRef.current.style.transform = `translate3d(${position.pointerX}px, ${position.pointerY}px, 0)`
-      }
-
-      if (position.distance > 1) {
-        rotate(position)
-      } else {
-        if (cursorRef.current) {
-          cursorRef.current.style.transform += ` rotate(${angleDisplaceRef.current}deg)`
-        }
-      }
-
-      previousPointerXRef.current = position.pointerX
-      previousPointerYRef.current = position.pointerY
-    }
-  }
-
-  const rotate = (position) => {
-    if (cursorRef.current) {
-      const unsortedAngle =
-        Math.atan(Math.abs(position.distanceY) / Math.abs(position.distanceX)) *
-        degreesRef.current
-      let modAngle
-
-      const style = cursorRef.current.style
-
-      previousAngleRef.current = angleRef.current
-
-      if (position.distanceX <= 0 && position.distanceY >= 0) {
-        angleRef.current = 90 - unsortedAngle + 0
-      } else if (position.distanceX < 0 && position.distanceY < 0) {
-        angleRef.current = unsortedAngle + 90
-      } else if (position.distanceX >= 0 && position.distanceY <= 0) {
-        angleRef.current = 90 - unsortedAngle + 180
-      } else if (position.distanceX > 0 && position.distanceY > 0) {
-        angleRef.current = unsortedAngle + 270
-      }
-
-      if (isNaN(angleRef.current)) {
-        angleRef.current = previousAngleRef.current
-      } else {
-        if (angleRef.current - previousAngleRef.current <= -270) {
-          angleDisplaceRef.current +=
-            360 + angleRef.current - previousAngleRef.current
-        } else if (angleRef.current - previousAngleRef.current >= 270) {
-          angleDisplaceRef.current +=
-            angleRef.current - previousAngleRef.current - 360
-        } else {
-          angleDisplaceRef.current +=
-            angleRef.current - previousAngleRef.current
-        }
-      }
-
-      style.transform += ` rotate(${angleDisplaceRef.current}deg)`
-
-      setTimeout(() => {
-        modAngle =
-          angleDisplaceRef.current >= 0
-            ? angleDisplaceRef.current % 360
-            : 360 + (angleDisplaceRef.current % 360)
-        if (modAngle >= 45 && modAngle < 135) {
-          style.left = `${-cursorSizeRef.current / 2}px`
-          style.top = `${-cursorSizeRef.current / 2}px`
-        } else if (modAngle >= 135 && modAngle < 225) {
-          style.left = `${-cursorSizeRef.current / 2}px`
-          style.top = `${-cursorSizeRef.current}px`
-        } else if (modAngle >= 225 && modAngle < 315) {
-          style.left = '0px'
-          style.top = `${-cursorSizeRef.current / 2}px`
-        } else {
-          style.left = `${-cursorSizeRef.current / 2}px`
-          style.top = '0px'
-        }
-      }, 0)
-    }
-  }
-
   useEffect(() => {
+    const move = (event) => {
+      if (rootRef.current) {
+        const position = positionRef.current
+        position.distanceX =
+          previousPointerXRef.current -
+          (event.pageX + rootRef.current.getBoundingClientRect().x)
+        position.distanceY =
+          previousPointerYRef.current -
+          (event.pageY + rootRef.current.getBoundingClientRect().y)
+        position.pointerX =
+          event.pageX + rootRef.current.getBoundingClientRect().x
+        position.pointerY =
+          event.pageY + rootRef.current.getBoundingClientRect().y
+        position.distance = Math.sqrt(
+          position.distanceY ** 2 + position.distanceX ** 2
+        )
+        if (cursorRef.current) {
+          cursorRef.current.style.transform = `translate3d(${position.pointerX}px, ${position.pointerY}px, 0)`
+        }
+
+        if (position.distance > 1) {
+          rotate(position)
+        } else {
+          if (cursorRef.current) {
+            cursorRef.current.style.transform += ` rotate(${angleDisplaceRef.current}deg)`
+          }
+        }
+
+        previousPointerXRef.current = position.pointerX
+        previousPointerYRef.current = position.pointerY
+      }
+    }
+
+    const rotate = (position) => {
+      if (cursorRef.current) {
+        const unsortedAngle =
+          Math.atan(
+            Math.abs(position.distanceY) / Math.abs(position.distanceX)
+          ) * degreesRef.current
+        let modAngle
+
+        const style = cursorRef.current.style
+
+        previousAngleRef.current = angleRef.current
+
+        if (position.distanceX <= 0 && position.distanceY >= 0) {
+          angleRef.current = 90 - unsortedAngle + 0
+        } else if (position.distanceX < 0 && position.distanceY < 0) {
+          angleRef.current = unsortedAngle + 90
+        } else if (position.distanceX >= 0 && position.distanceY <= 0) {
+          angleRef.current = 90 - unsortedAngle + 180
+        } else if (position.distanceX > 0 && position.distanceY > 0) {
+          angleRef.current = unsortedAngle + 270
+        }
+
+        if (isNaN(angleRef.current)) {
+          angleRef.current = previousAngleRef.current
+        } else {
+          if (angleRef.current - previousAngleRef.current <= -270) {
+            angleDisplaceRef.current +=
+              360 + angleRef.current - previousAngleRef.current
+          } else if (angleRef.current - previousAngleRef.current >= 270) {
+            angleDisplaceRef.current +=
+              angleRef.current - previousAngleRef.current - 360
+          } else {
+            angleDisplaceRef.current +=
+              angleRef.current - previousAngleRef.current
+          }
+        }
+
+        style.transform += ` rotate(${angleDisplaceRef.current}deg)`
+
+        setTimeout(() => {
+          modAngle =
+            angleDisplaceRef.current >= 0
+              ? angleDisplaceRef.current % 360
+              : 360 + (angleDisplaceRef.current % 360)
+          if (modAngle >= 45 && modAngle < 135) {
+            style.left = `${-cursorSizeRef.current / 2}px`
+            style.top = `${-cursorSizeRef.current / 2}px`
+          } else if (modAngle >= 135 && modAngle < 225) {
+            style.left = `${-cursorSizeRef.current / 2}px`
+            style.top = `${-cursorSizeRef.current}px`
+          } else if (modAngle >= 225 && modAngle < 315) {
+            style.left = '0px'
+            style.top = `${-cursorSizeRef.current / 2}px`
+          } else {
+            style.left = `${-cursorSizeRef.current / 2}px`
+            style.top = '0px'
+          }
+        }, 0)
+      }
+    }
     const cursor = cursorRef.current
     if (
       /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(

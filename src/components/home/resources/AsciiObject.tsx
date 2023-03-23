@@ -2,7 +2,7 @@
 import { OrbitControls, useCursor } from '@react-three/drei'
 import { Canvas, useFrame, useThree } from '@react-three/fiber'
 import { useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react'
-import { Mesh } from 'three'
+import { Mesh, Vector3 } from 'three'
 import { AsciiEffect } from 'three-stdlib'
 
 export default function AsciiObject() {
@@ -21,9 +21,28 @@ export default function AsciiObject() {
 
 function Knot(props) {
   const ref = useRef<Mesh>()
+  // const { size, camera } = useThree()
+
+  // useEffect(() => {
+  //   const onMouseMove = (event) => {
+  //     const x = (event.clientX / size.width) * 2 - 1
+  //     const y = -(event.clientY / size.height) * 2 + 1
+
+  //     if (ref.current) {
+  //       ref.current.rotation.x = y * Math.PI
+  //       ref.current.rotation.y = x * Math.PI
+  //     }
+  //   }
+  //   window.addEventListener('mousemove', onMouseMove)
+
+  //   return () => {
+  //     window.removeEventListener('mousemove', onMouseMove)
+  //   }
+  // }, [camera, size])
+
   useFrame((state, delta) =>
     ref.current
-      ? (ref.current.rotation.x = ref.current.rotation.y += delta / 2)
+      ? (ref.current.rotation.x = ref.current.rotation.y += delta / 4)
       : undefined
   )
   return (
