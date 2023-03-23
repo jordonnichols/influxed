@@ -28,7 +28,7 @@ const CursorWrapper = ({ children }) => {
         boxSizing: 'border-box',
         position: 'fixed',
         top: '0px',
-        left: `${-cursorSizeRef.current / 2}px`,
+        left: `${-cursorSizeRef.current / 2 + 1} px`,
         zIndex: '2147483647',
         width: `${cursorSizeRef.current}px`,
         height: `${cursorSizeRef.current}px`,
