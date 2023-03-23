@@ -32,7 +32,7 @@ const CursorWrapper = ({ children }) => {
         zIndex: '2147483647',
         width: `${cursorSizeRef.current}px`,
         height: `${cursorSizeRef.current}px`,
-        transition: '250ms, transform 100ms',
+        transition: '250ms, transform 150ms',
         userSelect: 'none',
         pointerEvents: 'none',
       }
@@ -164,7 +164,7 @@ const CursorWrapper = ({ children }) => {
   return (
     <body ref={rootRef}>
       <div
-        className={`fixed top-0 left-${cursorSizeRef.current} z-50 w-[40px] h-[40px] transition-all select-none pointer-events-none`}
+        className={`fixed top-0 left-${cursorSizeRef.current} z-50 w-[40px] h-[40px] select-none pointer-events-none`}
         ref={cursorRef}
       >
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
