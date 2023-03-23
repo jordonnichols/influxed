@@ -140,17 +140,17 @@ const CursorWrapper = ({ children }) => {
   }
 
   useEffect(() => {
-    // const cursor = cursorRef.current
-    // if (
-    //   /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
-    //     navigator.userAgent
-    //   )
-    // ) {
-    //   if (cursor) {
-    //     cursor.remove()
-    //   }
-    //   return
-    // }
+    const cursor = cursorRef.current
+    if (
+      /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+        navigator.userAgent
+      )
+    ) {
+      if (cursor) {
+        cursor.remove()
+      }
+      return
+    }
 
     document.onmousemove = (event) => {
       move(event)
