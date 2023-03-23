@@ -8,7 +8,7 @@ body {
   font-family: 'Helvetica Neue', sans-serif;
   color: #fff;
   background: #111;
-  cursor: none;
+  /* cursor: none; */
 }
 
 a {

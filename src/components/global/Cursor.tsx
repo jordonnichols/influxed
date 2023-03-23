@@ -123,7 +123,7 @@ const CursorWrapper = ({ children }) => {
             ? angleDisplaceRef.current % 360
             : 360 + (angleDisplaceRef.current % 360)
         if (modAngle >= 45 && modAngle < 135) {
-          style.left = `${cursorSizeRef.current}px`
+          style.left = `${-cursorSizeRef.current / 2}px`
           style.top = `${-cursorSizeRef.current / 2}px`
         } else if (modAngle >= 135 && modAngle < 225) {
           style.left = `${-cursorSizeRef.current / 2}px`
@@ -140,17 +140,17 @@ const CursorWrapper = ({ children }) => {
   }
 
   useEffect(() => {
-    const cursor = cursorRef.current
-    if (
-      /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
-        navigator.userAgent
-      )
-    ) {
-      if (cursor) {
-        cursor.remove()
-      }
-      return
-    }
+    // const cursor = cursorRef.current
+    // if (
+    //   /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+    //     navigator.userAgent
+    //   )
+    // ) {
+    //   if (cursor) {
+    //     cursor.remove()
+    //   }
+    //   return
+    // }
 
     document.onmousemove = (event) => {
       move(event)
