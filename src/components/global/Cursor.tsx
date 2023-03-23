@@ -2,7 +2,7 @@
 import { useEffect, useRef } from 'react'
 
 const CursorWrapper = ({ children }) => {
-  const rootRef = useRef<HTMLElement>(null)
+  const rootRef = useRef<HTMLBodyElement>(null)
   const cursorRef = useRef<HTMLDivElement>(null)
 
   const positionRef = useRef({
@@ -162,7 +162,7 @@ const CursorWrapper = ({ children }) => {
   }, [])
 
   return (
-    <body>
+    <body ref={rootRef}>
       <div
         className={`fixed top-0 left-${cursorSizeRef.current} z-50 w-[40px] h-[40px] transition-all select-none pointer-events-none`}
         ref={cursorRef}
