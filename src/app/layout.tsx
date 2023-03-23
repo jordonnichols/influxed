@@ -1,6 +1,9 @@
 import 'tailwindcss/tailwind.css'
 import '../components/global/global.css'
 
+import Script from 'next/script'
+import ArrowPointer from 'src/components/global/Cursor'
+
 export const metadata = {
   title: 'influxed',
   description: 'influxed by Jordon Nichols',
@@ -15,6 +18,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
+        <Script
+          src="https://kit.fontawesome.com/cc6c58e096.js"
+          crossOrigin="anonymous"
+        />
         <link
           rel="icon"
           type="image/png"
@@ -31,6 +38,7 @@ export default function RootLayout({
         <link rel="icon" href="/favicon.ico" />
       </head>
       <body className="cursor-">
+        <ArrowPointer />
         <main>{children}</main>
       </body>
     </html>

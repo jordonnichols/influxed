@@ -13,7 +13,7 @@ export default function LinkCopy({ children, copyText, className = '' }) {
   return (
     <p
       onClick={handleCopyClick}
-      className={`font-bold hover:text-blue-500 hover:underline cursor-pointer ${className}`}
+      className={`font-bold hover:text-red-500 hover:underline px-2 rounded-md ${className}`}
     >
       {isCopied ? 'copied' : children}
     </p>
