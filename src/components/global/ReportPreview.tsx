@@ -11,6 +11,9 @@ export default function ReportItem({
   image,
   title,
   slug,
+  number,
+  setSelectedPreview,
+  selectedPreview,
 }) {
   function formatShortMonthDate(date: Date) {
     return `${new Date(date).toLocaleString('en-US', {
@@ -19,28 +22,32 @@ export default function ReportItem({
       year: 'numeric',
     })}`
   }
-  const [isHover, setIsHover] = useState(false)
 
   const handleMouseEnter = () => {
-    setIsHover(true)
+    setSelectedPreview(number)
   }
 
   const handleMouseLeave = () => {
-    setIsHover(false)
+    setSelectedPreview()
   }
   return (
     <div
-      className="text-sm lg:text-lg bg-white/5 p-6 lg:p-12 flex flex-col justify-between border-white/5 border-2 rounded-lg lg:w-[420px] w-[300px] lg:h-[420px] h-[300px] transition-all hover:border-red-500 focus-within:border-red-500 bg-gradient-to-t hover:from-red-500/25 focus-within:from-red-500/25 relative select-none hover:shadow-red-500/25 focus-within:shadow-red-500/25 hover:shadow-lg focus-within:shadow-lg overflow-hidden"
+      className={`text-sm lg:text-lg bg-white/5 p-6 lg:p-12 flex flex-col justify-between border-white/5 border-2 rounded-lg lg:w-[420px] w-[300px] lg:h-[420px] h-[300px] transition-all  bg-gradient-to-t relative select-none overflow-hidden ${
+        selectedPreview === number
+          ? 'border-red-500 from-red-500/25 shadow-red-500/25 shadow-lg rounded-4xl'
+          : ''
+      }`}
       onMouseEnter={handleMouseEnter}
       onBlur={handleMouseLeave}
       onFocus={handleMouseEnter}
+      onTouchStart={handleMouseEnter}
+      onTouchCancel={handleMouseLeave}
       onMouseLeave={handleMouseLeave}
-      style={{ borderBottomRightRadius: isHover ? '64px' : '8px' }}
     >
       <Link
         href={`/posts/${slug}`}
-        className={`text-base lg:text-xl bg-red-600 absolute bottom-8 right-8 flex gap-2 items-center rounded-full px-6 py-4 duration-200 hover:drop-shadow-lg focus:translate-y-0 peer-focus:translate-y-0 hover:bg-red-500 ${
-          isHover ? 'translate-y-0' : 'translate-y-32'
+        className={`text-base lg:text-xl bg-red-600 absolute bottom-8 right-8 flex gap-2 items-center rounded-full px-6 py-4 duration-200 hover:drop-shadow-lg hover:bg-red-500 ${
+          selectedPreview === number ? 'translate-y-0' : 'translate-y-32'
         }`}
       >
         <span>Go to Report</span>

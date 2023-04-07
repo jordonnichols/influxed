@@ -12,6 +12,7 @@ export default function Reports() {
   const divRef = useRef<HTMLDivElement>(null)
   const carouselRef = useRef<HTMLDivElement>(null)
   const containerRef = useRef<HTMLDivElement>(null)
+  const [selectedPreview, setSelectedPreview] = useState()
   const [posts, setPosts] = useState<Post[]>([])
   const [scrollerPercent, setScrollerPercent] = useState(0)
 
@@ -45,7 +46,7 @@ export default function Reports() {
 
   return (
     <div
-      className="py-48 max-w-[1280px] m-auto px-4 overflow-hidden"
+      className="py-48 max-w-[1232px] m-auto px-4 overflow-hidden"
       ref={containerRef}
     >
       <div className="flex lg:gap-16 lg:mb-16 flex-col lg:flex-row">
@@ -96,12 +97,15 @@ export default function Reports() {
         defaultPosition={{ x: 0, y: 0 }}
       >
         <div
-          className="grid grid-flow-col lg:gap-12 gap-6 absolute duration-200"
+          className=" grid-flow-col lg:gap-12 gap-6 absolute duration-200 overflow-x-auto overflow-y-hidden xl:grid hidden"
           ref={carouselRef}
         >
           {posts.map((post, i) => (
             <ReportPreview
               key={i}
+              number={i}
+              selectedPreview={selectedPreview}
+              setSelectedPreview={setSelectedPreview}
               date={post.date}
               image={post.coverImage}
               excerpt={post.excerpt}
