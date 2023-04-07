@@ -32,7 +32,7 @@ const DraggableCarousel = ({ children, screenWidth }) => {
     if (!isDragging || !carouselRef.current) return
     const x = e.touches[0].clientX - startX
     if (x > 0) return setTranslateX(0)
-    console.log(carouselRef.current.getBoundingClientRect())
+    console.log(children)
     setTranslateX(x)
   }
 

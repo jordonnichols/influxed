@@ -117,7 +117,7 @@ export default function Reports() {
           All Reports
         </Link> */}
       </div>
-      <div className="min-h-[100vh]"></div>
+      <div className="min-h-[25vh]"></div>
     </div>
   )
 }
