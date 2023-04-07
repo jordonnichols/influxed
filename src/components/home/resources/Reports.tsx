@@ -51,27 +51,35 @@ export default function Reports() {
       <div className="flex lg:gap-16 lg:mb-16 flex-col lg:flex-row">
         <div className="flex lg:gap-16 gap-6">
           <div
-            className="lg:w-4 rounded flex flex-col gap-1 relative w-2"
+            className="rounded flex flex-col gap-1 relative w-2"
             ref={divRef}
           >
             <div
               className={`bg-red-500 h-4 rounded absolute w-full`}
-              style={{ top: `${scrollerPercent}%` }}
+              style={{
+                top: `calc(${scrollerPercent}% - ${scrollerPercent * 0.16}px)`,
+              }}
             ></div>
             <div className="bg-white/5 h-full rounded"></div>
           </div>
 
-          <h2 className="text-xl lg:text-5xl font-light flex flex-col gap-1 py-4 whitespace-nowrap">
+          <h2 className="text-xl lg:text-4xl xl:text-5xl font-light flex flex-col gap-1 py-4 whitespace-nowrap">
             <span>Showcasing the art</span>
             <span>and science of building and</span>
             <span>breaking down secure systems.</span>
           </h2>
         </div>
         <p className="mt-auto py-4 text-white/50 lg:text-base text-sm hidden lg:block">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit
-          dolorem quo sapiente sint? Debitis, eligendi dignissimos soluta, porro
-          voluptas explicabo vel, praesentium neque illo suscipit dolor aliquam
-          hic molestias minima.
+          <span>
+            Explore a comprehensive collection of articles and resources that
+          </span>
+          <span>
+            delve into the intricate world of cybersecurity. Uncover the latest
+          </span>
+          <span>
+            trends, innovative strategies, and expert advice on designing,
+          </span>
+          <span>implementing, and maintaining secure systems.</span>
         </p>
         <div className="lg:hidden block mb-6"></div>
       </div>
