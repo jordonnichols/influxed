@@ -1,12 +1,10 @@
 'use client'
-import Image from 'next/image'
-import Link from 'next/link'
 import { useEffect, useRef, useState } from 'react'
 import Draggable from 'react-draggable'
 import ReportPreview from 'src/components/global/ReportPreview'
 import { getAllPosts } from 'src/lib/sanity.client'
-import { urlForImage } from 'src/lib/sanity.image'
 import { Post } from 'src/lib/sanity.queries'
+import DraggableCarousel from './DraggableCarousel'
 
 export default function Reports() {
   const divRef = useRef<HTMLDivElement>(null)
@@ -46,7 +44,7 @@ export default function Reports() {
 
   return (
     <div
-      className="lg:py-48 py-24 max-w-[1232px] m-auto px-4 overflow-hidden"
+      className="lg:py-48 py-24 max-w-[1232px] m-auto px-4 overflow-hidden w-screen"
       ref={containerRef}
     >
       <div className="flex lg:gap-16 lg:mb-16 flex-col lg:flex-row ">
@@ -89,38 +87,28 @@ export default function Reports() {
           implementing, and maintaining secure systems.
         </div>
       </div>
-      <Draggable
-        axis="x"
-        bounds={{
-          left:
-            carouselRef.current && containerRef.current
-              ? -carouselRef.current.getBoundingClientRect().width +
-                containerRef.current.getBoundingClientRect().width
-              : 0,
-          right: 0,
-        }}
-        defaultPosition={{ x: 0, y: 0 }}
+      <DraggableCarousel
+        screenWidth={
+          containerRef.current
+            ? containerRef.current.getBoundingClientRect().width
+            : 0
+        }
       >
-        <div
-          className="grid-flow-col grid lg:gap-12 gap-6 absolute duration-200 overflow-x-auto overflow-y-hidden"
-          ref={carouselRef}
-        >
-          {posts.map((post, i) => (
-            <ReportPreview
-              key={i}
-              number={i}
-              selectedPreview={selectedPreview}
-              setSelectedPreview={setSelectedPreview}
-              date={post.date}
-              image={post.coverImage}
-              excerpt={post.excerpt}
-              category={post.category?.title}
-              title={post.title}
-              slug={post.slug}
-            />
-          ))}
-        </div>
-      </Draggable>
+        {posts.map((post, i) => (
+          <ReportPreview
+            key={i}
+            number={i}
+            selectedPreview={selectedPreview}
+            setSelectedPreview={setSelectedPreview}
+            date={post.date}
+            image={post.coverImage}
+            excerpt={post.excerpt}
+            category={post.category?.title}
+            title={post.title}
+            slug={post.slug}
+          />
+        ))}
+      </DraggableCarousel>
       <div className="w-full flex justify-center mt-[500px]">
         {/* <Link
           href="/posts"
