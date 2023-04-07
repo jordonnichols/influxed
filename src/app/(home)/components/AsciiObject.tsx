@@ -8,12 +8,7 @@ import { AsciiEffect } from 'three-stdlib'
 export default function AsciiObject() {
   return (
     <>
-      <Canvas
-        className="h-full w-full !absolute top-0"
-        onProgress={(event) => {
-          console.log(event, '****')
-        }}
-      >
+      <Canvas className="h-full w-full !absolute top-0">
         <color attach="background" args={['black']} />
         <spotLight position={[10, 10, 10]} angle={20} penumbra={0} />
         <pointLight position={[-10, -10, -10]} />

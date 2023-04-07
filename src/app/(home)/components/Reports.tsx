@@ -4,15 +4,16 @@ import Draggable from 'react-draggable'
 import ReportPreview from 'src/components/global/ReportPreview'
 import { getAllPosts } from 'src/lib/sanity.client'
 import { Post } from 'src/lib/sanity.queries'
-import DraggableCarousel from './DraggableCarousel'
+import DraggableCarousel from '../../../app/(home)/components/DraggableCarousel'
+import useMobileDetect from 'src/hooks/useMobileDetect'
 
 export default function Reports() {
   const divRef = useRef<HTMLDivElement>(null)
-  const carouselRef = useRef<HTMLDivElement>(null)
   const containerRef = useRef<HTMLDivElement>(null)
   const [selectedPreview, setSelectedPreview] = useState()
   const [posts, setPosts] = useState<Post[]>([])
   const [scrollerPercent, setScrollerPercent] = useState(0)
+  const detectMobile = useMobileDetect()
 
   useEffect(() => {
     ;(async () => {
@@ -23,7 +24,6 @@ export default function Reports() {
 
     // scroll events
     const handleScroll = () => {
-      console.log(window.innerHeight)
       if (divRef.current) {
         const rect1 = divRef.current.getBoundingClientRect()
         if (rect1.y < window.innerHeight && rect1.y > 0) {
@@ -44,7 +44,8 @@ export default function Reports() {
 
   return (
     <div
-      className="lg:py-48 py-24 max-w-[1232px] m-auto px-4 overflow-hidden w-screen"
+      className="lg:py-48 py-24 max-w-[1232px] m-auto px-4"
+      style={{ overflow: detectMobile.isMobile() ? 'hidden' : 'visible' }}
       ref={containerRef}
     >
       <div className="flex lg:gap-16 lg:mb-16 flex-col lg:flex-row ">
@@ -87,13 +88,7 @@ export default function Reports() {
           implementing, and maintaining secure systems.
         </div>
       </div>
-      <DraggableCarousel
-        screenWidth={
-          containerRef.current
-            ? containerRef.current.getBoundingClientRect().width
-            : 0
-        }
-      >
+      <DraggableCarousel width={posts.length * 420 + posts.length * 24 + 16}>
         {posts.map((post, i) => (
           <ReportPreview
             key={i}

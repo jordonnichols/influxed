@@ -1,4 +1,4 @@
-import HomePage from 'src/components/home'
+import HomePage from 'src/app/(home)/components'
 
 export default async function Page() {
   return <HomePage />

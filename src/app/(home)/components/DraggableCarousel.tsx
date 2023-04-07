@@ -1,6 +1,6 @@
 import { useRef, useState } from 'react'
 
-const DraggableCarousel = ({ children, screenWidth }) => {
+const DraggableCarousel = ({ children, width }) => {
   const carouselRef = useRef<HTMLDivElement>(null)
   const [translateX, setTranslateX] = useState(0)
   const [isDragging, setIsDragging] = useState(false)
@@ -13,8 +13,20 @@ const DraggableCarousel = ({ children, screenWidth }) => {
 
   const handleMouseMove = (e) => {
     if (!isDragging || !carouselRef.current) return
+    const width = carouselRef.current.getBoundingClientRect().width
     const x = e.clientX - startX
     if (x > 0) return setTranslateX(0)
+    if (
+      x <
+      width -
+        ((width > 1024 ? 420 : 300) * children.length +
+          (width > 1024 ? 48 : 24) * (children.length - 1))
+    )
+      return setTranslateX(
+        width -
+          ((width > 1024 ? 420 : 300) * children.length +
+            (width > 1024 ? 48 : 24) * (children.length - 1))
+      )
 
     setTranslateX(x)
   }
@@ -30,9 +42,21 @@ const DraggableCarousel = ({ children, screenWidth }) => {
 
   const handleTouchMove = (e) => {
     if (!isDragging || !carouselRef.current) return
+    const width = carouselRef.current.getBoundingClientRect().width
     const x = e.touches[0].clientX - startX
     if (x > 0) return setTranslateX(0)
-    console.log(children)
+    if (
+      x <
+      width -
+        ((width > 1024 ? 420 : 300) * children.length +
+          (width > 1024 ? 48 : 24) * (children.length - 1))
+    )
+      return setTranslateX(
+        width -
+          ((width > 1024 ? 420 : 300) * children.length +
+            (width > 1024 ? 48 : 24) * (children.length - 1))
+      )
+
     setTranslateX(x)
   }
 
@@ -42,7 +66,7 @@ const DraggableCarousel = ({ children, screenWidth }) => {
 
   return (
     <div
-      className="grid-flow-col grid lg:gap-12 gap-6 duration-200 w-screen"
+      className="grid-flow-col grid lg:gap-12 gap-6 duration-200"
       ref={carouselRef}
       onMouseDown={handleMouseDown}
       onMouseMove={handleMouseMove}

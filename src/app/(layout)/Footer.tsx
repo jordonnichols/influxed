@@ -1,5 +1,5 @@
-import LinkCopy from '../global/LinkCopy'
-import LinkTo from '../global/LinkTo' //
+import LinkCopy from '../../components/global/LinkCopy'
+import LinkTo from '../../components/global/LinkTo' //
 
 export default function Footer() {
   return (

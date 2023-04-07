@@ -57,7 +57,7 @@ export default function ReportItem({
       </Link>
       <div className="h-fit relative">
         <Image
-          className="object-contain h-fit lg:max-h-[90px] max-h-[80px]"
+          className="object-contain h-fit lg:max-h-[90px] max-h-[80px] select-none pointer-events-none"
           width={90}
           height={90}
           alt={`Cover Image for ${title}`}
