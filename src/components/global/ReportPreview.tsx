@@ -34,9 +34,8 @@ export default function ReportItem({
       onMouseEnter={handleMouseEnter}
       onBlur={handleMouseLeave}
       onFocus={handleMouseEnter}
-      onClick={() => setIsHover((prev) => !prev)}
-      onTouchStart={handleMouseEnter}
-      onTouchEnd={handleMouseLeave}
+      onTouchCancel={handleMouseLeave}
+      onTouchStartCapture={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
       style={{ borderBottomRightRadius: isHover ? '64px' : '8px' }}
     >
