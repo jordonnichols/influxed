@@ -14,7 +14,6 @@ export default function Reports() {
   const [selectedPreview, setSelectedPreview] = useState()
   const [posts, setPosts] = useState<Post[]>([])
   const [scrollerPercent, setScrollerPercent] = useState(0)
-  const detectMobile = useMobileDetect()
 
   useEffect(() => {
     ;(async () => {
@@ -45,8 +44,7 @@ export default function Reports() {
 
   return (
     <div
-      className="lg:py-48 py-24 max-w-[1232px] m-auto px-4"
-      style={{ overflow: detectMobile.isMobile() ? 'hidden' : 'visible' }}
+      className="lg:py-48 py-24 max-w-[1232px] m-auto px-4 lg:overflow-visible overflow-hidden"
       ref={containerRef}
     >
       <div className="flex lg:gap-16 lg:mb-16 flex-col lg:flex-row ">
