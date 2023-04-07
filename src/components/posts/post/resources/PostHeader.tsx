@@ -5,25 +5,23 @@ import PostTitle from 'src/components/posts/post/resources/PostTitle'
 import type { Post } from 'src/lib/sanity.queries'
 
 export default function PostHeader(
-  props: Pick<Post, 'title' | 'coverImage' | 'date' | 'author' | 'slug'>
+  props: Pick<Post, 'title' | 'date' | 'author'>
 ) {
-  const { title, coverImage, date, author, slug } = props
+  const { title, date, author } = props
   return (
     <>
       <PostTitle>{title}</PostTitle>
-      <div className="hidden md:mb-12 md:block">
-        {author && <Avatar name={author.name} picture={author.picture} />}
-      </div>
-      <div className="mb-8 sm:mx-0 md:mb-16">
-        <CoverImage title={title} image={coverImage} priority slug={slug} />
-      </div>
-      <div className="mx-auto max-w-2xl">
-        <div className="mb-6 block md:hidden">
-          {author && <Avatar name={author.name} picture={author.picture} />}
+
+      <div className="mx-auto max-w-2xl mb-6">
+        <div className="flex justify-between items-center mb-6">
+          <div className="block">
+            {author && <Avatar name={author.name} picture={author.picture} />}
+          </div>
+          <div className="text-xl font-bold">
+            <Date dateString={date} />
+          </div>
         </div>
-        <div className="mb-6 text-lg">
-          <Date dateString={date} />
-        </div>
+        <div className="border-b rounded-full"></div>
       </div>
     </>
   )

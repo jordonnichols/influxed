@@ -6,7 +6,6 @@ import BlogHeader from 'src/components/posts/allPosts/resources/BlogHeader'
 import PostBody from 'src/components/posts/post/resources/PostBody'
 import PostHeader from 'src/components/posts/post/resources/PostHeader'
 import PostTitle from 'src/components/posts/post/resources/PostTitle'
-import * as demo from 'src/lib/demo.data'
 import type { Post, Settings } from 'src/lib/sanity.queries'
 
 export interface PostPageProps {
@@ -21,7 +20,6 @@ const NO_POSTS: Post[] = []
 
 export default function PostPage(props: PostPageProps) {
   const { preview, loading, morePosts = NO_POSTS, post, settings } = props
-  const { title = demo.title } = settings || {}
 
   const slug = post?.slug
 
@@ -32,7 +30,6 @@ export default function PostPage(props: PostPageProps) {
   return (
     <main>
       <Container>
-        <BlogHeader title={title} level={2} />
         {preview && !post ? (
           <PostTitle>Loading…</PostTitle>
         ) : (
@@ -40,7 +37,6 @@ export default function PostPage(props: PostPageProps) {
             <article>
               <PostHeader
                 title={post.title}
-                coverImage={post.coverImage}
                 date={post.date}
                 author={post.author}
               />

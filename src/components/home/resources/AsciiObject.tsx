@@ -1,46 +1,60 @@
 'use client'
-import { OrbitControls, useCursor } from '@react-three/drei'
+import { OrbitControls } from '@react-three/drei'
 import { Canvas, useFrame, useThree } from '@react-three/fiber'
-import { useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react'
-import { Mesh, Vector3 } from 'three'
+import { useEffect, useLayoutEffect, useMemo, useRef } from 'react'
+import { Mesh } from 'three'
 import { AsciiEffect } from 'three-stdlib'
 
 export default function AsciiObject() {
   return (
-    <Canvas className="h-full w-full">
-      <color attach="background" args={['black']} />
-      <spotLight position={[10, 10, 10]} angle={20} penumbra={0} />
-      <pointLight position={[-10, -10, -10]} />
-      <Knot />
-      <OrbitControls enableZoom={false} enablePan={false} />
-      {/* @ts-expect-error */}
-      <AsciiRenderer />
-    </Canvas>
+    <>
+      <Canvas
+        className="h-full w-full !absolute top-0"
+        onProgress={(event) => {
+          console.log(event, '****')
+        }}
+      >
+        <color attach="background" args={['black']} />
+        <spotLight position={[10, 10, 10]} angle={20} penumbra={0} />
+        <pointLight position={[-10, -10, -10]} />
+        <Knot />
+        {/* <Model url="/path/to/your/model.gltf" /> */}
+        <OrbitControls enableZoom={false} enablePan={false} />
+        {/* @ts-expect-error */}
+        <AsciiRenderer />
+      </Canvas>
+    </>
+  )
+}
+
+function ProgressBar({ progress }) {
+  return (
+    <div
+      style={{
+        position: 'absolute',
+        top: '50%',
+        left: '50%',
+        transform: 'translate(-50%, -50%)',
+        width: '50%',
+        textAlign: 'center',
+      }}
+    >
+      <div
+        style={{
+          background: 'white',
+          height: '10px',
+          width: `${progress}%`,
+        }}
+      ></div>
+      <p style={{ color: 'white', marginTop: '5px' }}>{progress}%</p>
+    </div>
   )
 }
 
 function Knot(props) {
   const ref = useRef<Mesh>()
-  // const { size, camera } = useThree()
 
-  // useEffect(() => {
-  //   const onMouseMove = (event) => {
-  //     const x = (event.clientX / size.width) * 2 - 1
-  //     const y = -(event.clientY / size.height) * 2 + 1
-
-  //     if (ref.current) {
-  //       ref.current.rotation.x = y * Math.PI
-  //       ref.current.rotation.y = x * Math.PI
-  //     }
-  //   }
-  //   window.addEventListener('mousemove', onMouseMove)
-
-  //   return () => {
-  //     window.removeEventListener('mousemove', onMouseMove)
-  //   }
-  // }, [camera, size])
-
-  useFrame((state, delta) =>
+  useFrame((_, delta) =>
     ref.current
       ? (ref.current.rotation.x = ref.current.rotation.y += delta / 4)
       : undefined
@@ -49,30 +63,6 @@ function Knot(props) {
     <mesh {...props} ref={ref}>
       <torusKnotGeometry args={[1, 0.25, 128, 32]} />
       <meshStandardMaterial color="orange" />
-    </mesh>
-  )
-}
-function SpinningBall(props) {
-  const ref = useRef<Mesh>()
-  const [clicked, click] = useState(false)
-  const [hovered, hover] = useState(false)
-  // useCursor(hovered)
-  useFrame((state, delta) => {
-    return ref.current
-      ? (ref.current.rotation.x = ref.current.rotation.y += delta / 2)
-      : undefined
-  })
-  return (
-    <mesh
-      {...props}
-      ref={ref}
-      scale={1.5}
-      onClick={() => click(!clicked)}
-      onPointerOver={() => hover(true)}
-      onPointerOut={() => hover(false)}
-    >
-      <sphereGeometry args={[1, 32, 32]} />
-      <meshStandardMaterial color="white" />
     </mesh>
   )
 }
@@ -129,7 +119,7 @@ function AsciiRenderer({
   }, [effect, size])
 
   // Take over render-loop (that is what the index is for)
-  useFrame((state) => {
+  useFrame(() => {
     effect.render(scene, camera)
   }, renderIndex)
 

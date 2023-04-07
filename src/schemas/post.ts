@@ -3,6 +3,7 @@ import { format, parseISO } from 'date-fns'
 import { defineField, defineType } from 'sanity'
 
 import authorType from '../schemas/author'
+import categoryType from '../schemas/category'
 
 /**
  * This file is the schema definition for a post.
@@ -57,6 +58,12 @@ export default defineType({
       options: {
         hotspot: true,
       },
+    }),
+    defineField({
+      name: 'category',
+      title: 'Category',
+      type: 'reference',
+      to: [{ type: categoryType.name }],
     }),
     defineField({
       name: 'date',

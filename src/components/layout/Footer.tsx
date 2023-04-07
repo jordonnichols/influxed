@@ -1,5 +1,3 @@
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-
 import LinkCopy from '../global/LinkCopy'
 import LinkTo from '../global/LinkTo' //
 

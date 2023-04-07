@@ -2,37 +2,9 @@
 import React, { useEffect, useRef, useState } from 'react'
 
 const HeroWrapper = ({ children }) => {
-  const divRef = useRef(null)
-  const titleRef = useRef(null)
-  const [isVisible, setIsVisible] = useState(true)
-
-  function isInViewport(element1, element2) {
-    const rect1 = element1.getBoundingClientRect()
-    const rect2 = element2.getBoundingClientRect()
-    return rect1.top + rect1.height > rect2.height + 8
-  }
-
-  useEffect(() => {
-    const handleScroll = () => {
-      if ((divRef.current, titleRef.current)) {
-        setIsVisible(isInViewport(divRef.current, titleRef.current))
-      }
-    }
-
-    window.addEventListener('scroll', handleScroll)
-    return () => {
-      window.removeEventListener('scroll', handleScroll)
-    }
-  }, [])
-
   return (
-    <div className="relative h-[100dvh]" ref={divRef}>
-      <div
-        className={`${
-          isVisible ? 'fixed' : 'absolute bottom-2'
-        } z-10 duration-200 w-full cursor-none select-none`}
-        ref={titleRef}
-      >
+    <div className="h-[100dvh]">
+      <div className={`sticky top-0 z-10 duration-100 cursor-none select-none`}>
         <div className="text-center lg:text-left w-full">
           <h1 className=" 3xl:text-14xl font-bold lg:leading-zero 2xl:text-13xl xl:text-12xl lg:text-11xl inline-block sm:text-center text-8xl leading-none">
             influxed

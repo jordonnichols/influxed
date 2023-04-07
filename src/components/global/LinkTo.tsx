@@ -6,7 +6,7 @@ export default function LinkTo({ children, href, className = '' }) {
       href={href}
       target="_blank"
       rel="noopener noreferrer"
-      className={`font-bold  hover:underline px-2 rounded-md hover:text-red-500 ${className}`}
+      className={`font-bold  hover:underline px-2 rounded-md hover:text-red-500 focus:text-red-500 ${className}`}
     >
       {children}
     </a>

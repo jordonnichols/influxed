@@ -4,6 +4,7 @@ import '../components/global/global.css'
 import Script from 'next/script'
 import ArrowPointer from 'src/components/global/Cursor'
 import CursorWrapper from 'src/components/global/Cursor'
+import Footer from 'src/components/layout/Footer'
 
 export const metadata = {
   title: 'influxed',
@@ -38,9 +39,12 @@ export default function RootLayout({
         <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
         <link rel="icon" href="/favicon.ico" />
       </head>
-      <CursorWrapper>
+      <body>
+        {/* <CursorWrapper> */}
         <main>{children}</main>
-      </CursorWrapper>
+        {/* </CursorWrapper> */}
+        <Footer />
+      </body>
     </html>
   )
 }
