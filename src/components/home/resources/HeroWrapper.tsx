@@ -6,7 +6,7 @@ const HeroWrapper = ({ children }) => {
     <div className="h-[100dvh]">
       <div className={`sticky top-0 z-10 duration-100 cursor-none select-none`}>
         <div className="text-center lg:text-left w-full">
-          <h1 className=" 3xl:text-14xl font-bold lg:leading-zero 2xl:text-13xl xl:text-12xl lg:text-11xl inline-block sm:text-center text-8xl leading-none">
+          <h1 className=" 3xl:text-14xl font-bold lg:leading-zero 2xl:text-13xl xl:text-12xl lg:text-11xl inline-block sm:text-center text-7xl leading-none">
             influxed
           </h1>
         </div>

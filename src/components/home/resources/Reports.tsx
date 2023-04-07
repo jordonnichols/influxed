@@ -82,13 +82,11 @@ export default function Reports() {
           </span>
           <span>implementing, and maintaining secure systems.</span>
         </p>
-        <div className="lg:hidden block mb-6 text-white/50 px-4 text-sm">
-          <span>
-            Explore a comprehensive collection of articles and resources that
-            delve into the intricate world of cybersecurity. Uncover the latest
-            trends, innovative strategies, and expert advice on designing,
-            implementing, and maintaining secure systems.
-          </span>
+        <div className="lg:hidden block mb-6 text-white/50 text-sm text-center">
+          Explore a comprehensive collection of articles and resources that
+          delve into the intricate world of cybersecurity. Uncover the latest
+          trends, innovative strategies, and expert advice on designing,
+          implementing, and maintaining secure systems.
         </div>
       </div>
       <Draggable
