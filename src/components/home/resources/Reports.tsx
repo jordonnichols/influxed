@@ -46,13 +46,13 @@ export default function Reports() {
 
   return (
     <div
-      className="py-48 max-w-[1232px] m-auto px-4 overflow-hidden"
+      className="lg:py-48 py-24 max-w-[1232px] m-auto px-4 overflow-hidden"
       ref={containerRef}
     >
-      <div className="flex lg:gap-16 lg:mb-16 flex-col lg:flex-row">
-        <div className="flex lg:gap-16 gap-6">
+      <div className="flex lg:gap-16 lg:mb-16 flex-col lg:flex-row ">
+        <div className="flex lg:gap-16 gap-6 lg:justify-start justify-center">
           <div
-            className="rounded flex flex-col gap-1 relative w-2"
+            className="rounded lg:flex flex-col hidden gap-1 relative w-2"
             ref={divRef}
           >
             <div
@@ -64,7 +64,7 @@ export default function Reports() {
             <div className="bg-white/5 h-full rounded"></div>
           </div>
 
-          <h2 className="text-xl lg:text-4xl xl:text-5xl font-light flex flex-col gap-1 py-4 whitespace-nowrap">
+          <h2 className="text-xl lg:text-4xl xl:text-5xl font-light flex flex-col gap-1 py-4 whitespace-nowrap lg:text-left text-center">
             <span>Showcasing the art</span>
             <span>and science of building and</span>
             <span>breaking down secure systems.</span>
@@ -82,7 +82,14 @@ export default function Reports() {
           </span>
           <span>implementing, and maintaining secure systems.</span>
         </p>
-        <div className="lg:hidden block mb-6"></div>
+        <div className="lg:hidden block mb-6 text-white/50 px-4 text-sm">
+          <span>
+            Explore a comprehensive collection of articles and resources that
+            delve into the intricate world of cybersecurity. Uncover the latest
+            trends, innovative strategies, and expert advice on designing,
+            implementing, and maintaining secure systems.
+          </span>
+        </div>
       </div>
       <Draggable
         axis="x"
@@ -97,7 +104,7 @@ export default function Reports() {
         defaultPosition={{ x: 0, y: 0 }}
       >
         <div
-          className=" grid-flow-col lg:gap-12 gap-6 absolute duration-200 overflow-x-auto overflow-y-hidden xl:grid hidden"
+          className="grid-flow-col grid lg:gap-12 gap-6 absolute duration-200 overflow-x-auto overflow-y-hidden"
           ref={carouselRef}
         >
           {posts.map((post, i) => (
