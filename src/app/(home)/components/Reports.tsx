@@ -6,6 +6,7 @@ import { getAllPosts } from 'src/lib/sanity.client'
 import { Post } from 'src/lib/sanity.queries'
 import DraggableCarousel from '../../../app/(home)/components/DraggableCarousel'
 import useMobileDetect from 'src/hooks/useMobileDetect'
+import Link from 'next/link'
 
 export default function Reports() {
   const divRef = useRef<HTMLDivElement>(null)
@@ -104,15 +105,14 @@ export default function Reports() {
           />
         ))}
       </DraggableCarousel>
-      <div className="w-full flex justify-center mt-[500px]">
-        {/* <Link
+      <div className="flex justify-center lg:mt-16 mt-6">
+        <Link
           href="/posts"
-          className="bg-red-600 hover:bg-red-500 duration-200 border-2 border-white/25 px-4 py-2 rounded-full text-xl"
+          className="bg-red-600 hover:bg-red-500 duration-200 border-2 border-white/25 px-4 py-2 rounded-full lg:text-xl text-base"
         >
           All Reports
-        </Link> */}
+        </Link>
       </div>
-      <div className="min-h-[25vh]"></div>
     </div>
   )
 }
