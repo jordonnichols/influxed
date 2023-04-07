@@ -34,7 +34,7 @@ export default function ReportItem({
     <div
       className={`text-sm lg:text-lg bg-white/5 p-6 lg:p-12 flex flex-col justify-between border-white/5 border-2 rounded-lg lg:w-[420px] w-[300px] lg:h-[420px] h-[300px] transition-all  bg-gradient-to-t relative select-none overflow-hidden ${
         selectedPreview === number
-          ? 'border-red-500 from-red-500/25 shadow-red-500/25 shadow-lg rounded-4xl'
+          ? '!border-red-500 !from-red-500/25 !shadow-red-500/25 !shadow-lg !rounded-br-4xl'
           : ''
       }`}
       onMouseEnter={handleMouseEnter}
