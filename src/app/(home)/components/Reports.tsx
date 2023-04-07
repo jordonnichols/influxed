@@ -1,12 +1,13 @@
 'use client'
+import Link from 'next/link'
 import { useEffect, useRef, useState } from 'react'
 import Draggable from 'react-draggable'
 import ReportPreview from 'src/components/global/ReportPreview'
+import useMobileDetect from 'src/hooks/useMobileDetect'
 import { getAllPosts } from 'src/lib/sanity.client'
 import { Post } from 'src/lib/sanity.queries'
+
 import DraggableCarousel from '../../../app/(home)/components/DraggableCarousel'
-import useMobileDetect from 'src/hooks/useMobileDetect'
-import Link from 'next/link'
 
 export default function Reports() {
   const divRef = useRef<HTMLDivElement>(null)

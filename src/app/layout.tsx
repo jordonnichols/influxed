@@ -1,9 +1,8 @@
 import 'tailwindcss/tailwind.css'
 import '../components/global/global.css'
 
+import { Analytics } from '@vercel/analytics/react'
 import Script from 'next/script'
-import ArrowPointer from 'src/components/global/Cursor'
-import CursorWrapper from 'src/components/global/Cursor'
 import Footer from 'src/app/(layout)/Footer'
 
 export const metadata = {
@@ -40,9 +39,8 @@ export default function RootLayout({
         <link rel="icon" href="/favicon.ico" />
       </head>
       <body>
-        {/* <CursorWrapper> */}
         <main>{children}</main>
-        {/* </CursorWrapper> */}
+        <Analytics />
         <Footer />
       </body>
     </html>

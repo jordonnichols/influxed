@@ -1,7 +1,8 @@
 'use client'
-import type { Post } from 'src/lib/sanity.queries'
-import ReportPreview from './ReportPreview'
 import { useState } from 'react'
+import type { Post } from 'src/lib/sanity.queries'
+
+import ReportPreview from './ReportPreview'
 
 export default function MoreStories({ posts }: { posts: Post[] }) {
   const [selectedPreview, setSelectedPreview] = useState()
