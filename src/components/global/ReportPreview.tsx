@@ -34,14 +34,12 @@ export default function ReportItem({
       onMouseEnter={handleMouseEnter}
       onBlur={handleMouseLeave}
       onFocus={handleMouseEnter}
-      onTouchCancel={handleMouseLeave}
-      onTouchStartCapture={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
       style={{ borderBottomRightRadius: isHover ? '64px' : '8px' }}
     >
       <Link
         href={`/posts/${slug}`}
-        className={`text-base lg:text-xl bg-red-600 absolute bottom-8 right-8 flex gap-2 items-center rounded-full px-6 py-4 duration-200 hover:drop-shadow-lg hover:bg-red-500 ${
+        className={`text-base lg:text-xl bg-red-600 absolute bottom-8 right-8 flex gap-2 items-center rounded-full px-6 py-4 duration-200 hover:drop-shadow-lg focus:translate-y-0 peer-focus:translate-y-0 hover:bg-red-500 ${
           isHover ? 'translate-y-0' : 'translate-y-32'
         }`}
       >
