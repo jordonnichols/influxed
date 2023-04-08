@@ -88,7 +88,7 @@ export default function Reports() {
           implementing, and maintaining secure systems.
         </div>
       </div>
-      <DraggableCarousel width={posts.length * 420 + posts.length * 24 + 16}>
+      <DraggableCarousel>
         {posts.map((post, i) => (
           <ReportPreview
             key={i}
