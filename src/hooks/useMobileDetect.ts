@@ -1,23 +1,26 @@
-function getMobileDetect(userAgent: string) {
-  const isAndroid = (): boolean => Boolean(userAgent.match(/Android/i))
-  const isIos = (): boolean => Boolean(userAgent.match(/iPhone|iPad|iPod/i))
-  const isOpera = (): boolean => Boolean(userAgent.match(/Opera Mini/i))
-  const isWindows = (): boolean => Boolean(userAgent.match(/IEMobile/i))
-  const isSSR = (): boolean => Boolean(userAgent.match(/SSR/i))
+import { useState, useEffect } from 'react'
 
-  const isMobile = (): boolean =>
-    Boolean(isAndroid() || isIos() || isOpera() || isWindows())
-  const isDesktop = (): boolean => Boolean(!isMobile() && !isSSR())
-  return {
-    isMobile,
-    isDesktop,
-    isAndroid,
-    isIos,
-    isSSR,
-  }
-}
 export default function useMobileDetect() {
-  const userAgent =
-    typeof navigator === 'undefined' ? 'SSR' : navigator.userAgent
-  return getMobileDetect(userAgent)
+  const [isMobile, setIsMobile] = useState(false)
+
+  useEffect(() => {
+    const checkMobile = () => {
+      const userAgent =
+        typeof window.navigator === 'undefined' ? '' : navigator.userAgent
+      const mobile =
+        /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+          userAgent
+        )
+      setIsMobile(mobile)
+    }
+
+    checkMobile()
+    window.addEventListener('resize', checkMobile)
+
+    return () => {
+      window.removeEventListener('resize', checkMobile)
+    }
+  }, [])
+
+  return isMobile
 }

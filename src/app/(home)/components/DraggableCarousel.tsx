@@ -9,7 +9,7 @@ const DraggableCarousel = ({ children }) => {
   const [startClientX, setStartClientX] = useState(0)
   const [endClientX, setEndClientX] = useState(0)
   const [momentum, setMomentum] = useState(0)
-  const detectMobile = useMobileDetect()
+  const isMobile = useMobileDetect()
 
   useEffect(() => {
     const preventScroll = (e) => {
@@ -116,7 +116,7 @@ const DraggableCarousel = ({ children }) => {
       // onTouchEnd={handleTouchEnd}
       style={{
         transform: `translateX(${translateX}px)`,
-        overflowX: detectMobile.isMobile() ? 'scroll' : 'visible',
+        overflowX: isMobile ? 'scroll' : 'visible',
       }}
     >
       {children}
