@@ -5,8 +5,20 @@ const DraggableCarousel = ({ children }) => {
   const [translateX, setTranslateX] = useState(0)
   const [isDragging, setIsDragging] = useState(false)
   const [startX, setStartX] = useState(0)
-  const [startTime, setStartTime] = useState(0)
-  const [velocity, setVelocity] = useState(0)
+
+  useEffect(() => {
+    const preventScroll = (e) => {
+      if (isDragging) {
+        e.preventDefault()
+      }
+    }
+
+    window.addEventListener('touchmove', preventScroll, { passive: false })
+
+    return () => {
+      window.removeEventListener('touchmove', preventScroll)
+    }
+  }, [isDragging])
 
   const handleMouseDown = (e) => {
     setIsDragging(true)
@@ -37,38 +49,9 @@ const DraggableCarousel = ({ children }) => {
     setIsDragging(false)
   }
 
-  useEffect(() => {
-    if (!isDragging && velocity && carouselRef.current) {
-      const width = carouselRef.current.getBoundingClientRect().width
-      const momentumEffect = () => {
-        const newTranslateX = translateX + velocity
-        if (newTranslateX > 0) return setTranslateX(0)
-        if (
-          newTranslateX <
-          width -
-            ((width > 1024 ? 420 : 300) * children.length +
-              (width > 1024 ? 48 : 24) * (children.length - 1))
-        )
-          return setTranslateX(
-            width -
-              ((width > 1024 ? 420 : 300) * children.length +
-                (width > 1024 ? 48 : 24) * (children.length - 1))
-          )
-        setTranslateX(newTranslateX)
-        setVelocity(velocity * 0.95)
-
-        if (Math.abs(velocity) > 0.5) {
-          requestAnimationFrame(momentumEffect)
-        }
-      }
-      requestAnimationFrame(momentumEffect)
-    }
-  }, [isDragging, velocity, translateX, children.length])
-
   const handleTouchStart = (e) => {
     setIsDragging(true)
     setStartX(e.touches[0].clientX - translateX)
-    setStartTime(Date.now())
   }
 
   const handleTouchMove = (e) => {
@@ -92,9 +75,6 @@ const DraggableCarousel = ({ children }) => {
   }
 
   const handleTouchEnd = () => {
-    const endTime = Date.now()
-    const timeDelta = endTime - startTime
-    setVelocity((translateX - (startX + translateX)) / timeDelta)
     setIsDragging(false)
   }
 

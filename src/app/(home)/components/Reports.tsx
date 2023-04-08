@@ -107,7 +107,7 @@ export default function Reports() {
       <div className="flex justify-center lg:mt-16 mt-6">
         <Link
           href="/posts"
-          className="bg-red-600 hover:bg-red-500 duration-200 border-2 border-white/25 px-4 py-2 rounded-full lg:text-xl text-base"
+          className="bg-red-600 hover:bg-red-500 duration-200 px-4 py-2 rounded-full lg:text-xl text-base"
         >
           All Reports
         </Link>

@@ -3,6 +3,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import { urlForImage } from 'src/lib/sanity.image'
+import BackgroundGrid from './BackgroundGrid'
 
 export default function ReportItem({
   excerpt,
@@ -33,7 +34,7 @@ export default function ReportItem({
   }
   return (
     <div
-      className={`text-sm lg:text-lg bg-white/5 p-6 lg:p-12 flex flex-col justify-between border-white/5 border-2 rounded-lg lg:w-[420px] w-[300px] lg:h-[420px] h-[300px] transition-all  bg-gradient-to-t relative select-none overflow-hidden ${
+      className={`text-sm lg:text-lg p-6 lg:p-12 flex flex-col justify-between bg-neutral-800/25 border-gray-400/5 border-2 rounded-lg lg:w-[420px] w-[300px] lg:h-[420px] h-[300px] transition-all  bg-gradient-to-t relative select-none overflow-hidden ${
         selectedPreview === number
           ? '!border-red-500 !from-red-500/25 !shadow-red-500/25 !shadow-lg !rounded-br-4xl'
           : ''
@@ -45,10 +46,11 @@ export default function ReportItem({
       onTouchCancel={handleMouseLeave}
       onMouseLeave={handleMouseLeave}
     >
+      <BackgroundGrid color="gray-400/5" />
       <Link
         href={`/posts/${slug}`}
         onTouchEnd={() => router.push(`/posts/${slug}`)}
-        className={`text-base lg:text-xl bg-red-600 absolute bottom-8 right-8 flex gap-2 items-center rounded-full px-6 py-4 duration-200 hover:drop-shadow-lg hover:bg-red-500 ${
+        className={`text-base lg:text-xl bg-red-600 absolute bottom-8 right-8 flex gap-2 items-center rounded-full lg:px-6 lg:py-4 px-4 py-4 duration-200 hover:drop-shadow-lg hover:bg-red-500 ${
           selectedPreview === number ? 'translate-y-0' : 'translate-y-32'
         }`}
       >
