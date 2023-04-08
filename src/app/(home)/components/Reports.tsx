@@ -45,10 +45,10 @@ export default function Reports() {
 
   return (
     <div
-      className="lg:py-48 py-24 max-w-[1232px] m-auto px-4 lg:overflow-visible overflow-hidden"
+      className="lg:py-48 py-24 max-w-[1232px] m-auto lg:overflow-visible overflow-hidden"
       ref={containerRef}
     >
-      <div className="flex lg:gap-16 lg:mb-16 flex-col lg:flex-row ">
+      <div className="flex lg:gap-16 lg:mb-16 flex-col lg:flex-row px-4">
         <div className="flex lg:gap-16 gap-6 lg:justify-start justify-center">
           <div
             className="rounded lg:flex flex-col hidden gap-1 relative w-2"
