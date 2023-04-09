@@ -2,7 +2,7 @@
 import Link from 'next/link'
 import { useEffect, useRef, useState } from 'react'
 import Draggable from 'react-draggable'
-import ReportPreview from 'src/components/global/ReportPreview'
+import ReportPreview from 'src/app/(GLOBALS)/components/ReportPreview'
 import useMobileDetect from 'src/hooks/useMobileDetect'
 import { getAllPosts } from 'src/lib/sanity.client'
 import { Post } from 'src/lib/sanity.queries'

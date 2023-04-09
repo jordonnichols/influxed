@@ -1,4 +1,4 @@
-import IndexPage from 'src/components/posts/allPosts'
+import IndexPage from 'src/app/posts/components'
 import { getAllPosts, getSettings } from 'src/lib/sanity.client'
 
 async function getProps() {

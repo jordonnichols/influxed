@@ -1,7 +1,7 @@
-import MoreStories from 'src/components/global/MoreStories'
-import Container from 'src/components/posts/allPosts/resources/BlogContainer'
-import BlogHeader from 'src/components/posts/allPosts/resources/BlogHeader'
-import HeroPost from 'src/components/posts/allPosts/resources/HeroPost'
+import MoreStories from 'src/app/(GLOBALS)/components/MoreStories'
+import Container from 'src/app/posts/components/BlogContainer'
+import BlogHeader from 'src/app/posts/components/BlogHeader'
+import HeroPost from 'src/app/posts/components/HeroPost'
 import type { Post, Settings } from 'src/lib/sanity.queries'
 
 export interface IndexPageProps {

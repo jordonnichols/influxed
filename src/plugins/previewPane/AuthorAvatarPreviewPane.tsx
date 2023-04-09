@@ -1,5 +1,5 @@
 import { Card, Flex } from '@sanity/ui'
-import AuthorAvatar from 'src/components/global/AuthorAvatar'
+import AuthorAvatar from 'src/app/(GLOBALS)/components/AuthorAvatar'
 import type { Author } from 'src/lib/sanity.queries'
 
 export default function AuthorAvatarPreviewPane(props: Author) {
