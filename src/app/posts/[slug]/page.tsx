@@ -1,5 +1,5 @@
 import NotFound from 'src/components/global/NotFound'
-import PostPage from 'src/components/posts/post'
+import PostPage from 'src/app/posts/[slug]/components'
 import {
   getAllPostsSlugs,
   getPostAndMoreStories,
@@ -7,24 +7,22 @@ import {
 } from 'src/lib/sanity.client'
 
 async function getProps(params) {
-  const [settings, { post, morePosts }] = await Promise.all([
-    getSettings(),
-    getPostAndMoreStories(params.slug),
-  ])
+  const { post, morePosts } = await Promise.resolve(
+    getPostAndMoreStories(params.slug)
+  )
 
   return {
     post,
     morePosts,
-    settings,
   }
 }
 
 export default async function PostsSlugPage({ params }) {
-  const { settings, post, morePosts } = await getProps(params)
+  const { post, morePosts } = await getProps(params)
 
   if (!post) return <NotFound />
 
-  return <PostPage post={post} morePosts={morePosts} settings={settings} />
+  return <PostPage post={post} morePosts={morePosts} />
 }
 
 export async function getStaticPaths() {

@@ -3,23 +3,22 @@ import MoreStories from 'src/components/global/MoreStories'
 import SectionSeparator from 'src/components/global/SectionSeparator'
 import Container from 'src/components/posts/allPosts/resources/BlogContainer'
 import BlogHeader from 'src/components/posts/allPosts/resources/BlogHeader'
-import PostBody from 'src/components/posts/post/resources/PostBody'
-import PostHeader from 'src/components/posts/post/resources/PostHeader'
-import PostTitle from 'src/components/posts/post/resources/PostTitle'
-import type { Post, Settings } from 'src/lib/sanity.queries'
+import PostBody from 'src/app/posts/[slug]/components/PostBody'
+import PostHeader from 'src/app/posts/[slug]/components/PostHeader'
+import PostTitle from 'src/app/posts/[slug]/components/PostTitle'
+import type { Post } from 'src/lib/sanity.queries'
 
 export interface PostPageProps {
   preview?: boolean
   loading?: boolean
   post: Post
   morePosts: Post[]
-  settings: Settings
 }
 
 const NO_POSTS: Post[] = []
 
 export default function PostPage(props: PostPageProps) {
-  const { preview, loading, morePosts = NO_POSTS, post, settings } = props
+  const { preview, morePosts = NO_POSTS, post } = props
 
   const slug = post?.slug
 

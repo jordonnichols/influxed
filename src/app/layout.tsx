@@ -1,5 +1,5 @@
 import 'tailwindcss/tailwind.css'
-import '../components/global/global.css'
+import './(GLOBALS)/global.css'
 
 import { Analytics } from '@vercel/analytics/react'
 import Script from 'next/script'
@@ -18,6 +18,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+      <Analytics />
       <head>
         <Script
           src="https://kit.fontawesome.com/cc6c58e096.js"
@@ -40,8 +41,7 @@ export default function RootLayout({
       </head>
       <body>
         <main>{children}</main>
-        <Analytics />
-        <Footer />
+        {/* <Footer /> */}
       </body>
     </html>
   )

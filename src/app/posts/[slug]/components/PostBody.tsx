@@ -9,7 +9,7 @@
  */
 import { PortableText } from '@portabletext/react'
 
-import styles from '../css/PostBody.module.css'
+import styles from '../PostBody.module.css'
 
 export default function PostBody({ content }) {
   return (

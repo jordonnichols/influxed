@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import AuthorAvatar from 'src/components/global/AuthorAvatar'
 import CoverImage from 'src/components/global/CoverImage'
-import Date from 'src/components/posts/post/resources/PostDate'
+import Date from 'src/app/posts/[slug]/components/PostDate'
 import type { Post } from 'src/lib/sanity.queries'
 
 export default function HeroPost(

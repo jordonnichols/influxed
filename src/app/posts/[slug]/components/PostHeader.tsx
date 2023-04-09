@@ -1,7 +1,4 @@
-import Avatar from 'src/components/global/AuthorAvatar'
-import CoverImage from 'src/components/global/CoverImage'
-import Date from 'src/components/posts/post/resources/PostDate'
-import PostTitle from 'src/components/posts/post/resources/PostTitle'
+import PostTitle from 'src/app/posts/[slug]/components/PostTitle'
 import type { Post } from 'src/lib/sanity.queries'
 
 export default function PostHeader(
@@ -15,10 +12,14 @@ export default function PostHeader(
       <div className="mx-auto max-w-2xl mb-6">
         <div className="flex justify-between items-center mb-6">
           <div className="block">
-            {author && <Avatar name={author.name} picture={author.picture} />}
+            <p className="lg:text-xl text-base font-light">{author?.name}</p>
           </div>
-          <div className="text-xl font-bold">
-            <Date dateString={date} />
+          <div className="lg:text-xl text-base font-light">
+            {new Date(date!).toLocaleDateString('en-US', {
+              year: 'numeric',
+              month: 'long',
+              day: 'numeric',
+            })}
           </div>
         </div>
         <div className="border-b rounded-full"></div>

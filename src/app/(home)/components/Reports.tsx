@@ -7,7 +7,7 @@ import useMobileDetect from 'src/hooks/useMobileDetect'
 import { getAllPosts } from 'src/lib/sanity.client'
 import { Post } from 'src/lib/sanity.queries'
 
-import DraggableCarousel from '../../../app/(home)/components/DraggableCarousel'
+import DraggableCarousel from '../../(GLOBALS)/components/DraggableCarousel'
 
 export default function Reports() {
   const divRef = useRef<HTMLDivElement>(null)

@@ -3,31 +3,32 @@ import { useState } from 'react'
 import type { Post } from 'src/lib/sanity.queries'
 
 import ReportPreview from './ReportPreview'
+import DraggableCarousel from 'src/app/(GLOBALS)/components/DraggableCarousel'
 
 export default function MoreStories({ posts }: { posts: Post[] }) {
   const [selectedPreview, setSelectedPreview] = useState()
 
   return (
     <section>
-      <h2 className="mb-8 text-6xl font-bold leading-tight tracking-tighter md:text-7xl">
+      <h2 className="mb-8 text-4xl font-bold leading-tight tracking-tighter lg:text-7xl">
         More Reports
       </h2>
-      <div className="mb-32 grid grid-cols-1 gap-y-20 md:grid-cols-2 md:gap-x-16 md:gap-y-32 lg:gap-x-32">
+      <DraggableCarousel className="!p-0">
         {posts.map((post, i) => (
           <ReportPreview
-            number={i}
-            setSelectedPreview={setSelectedPreview}
-            selectedPreview={selectedPreview}
-            title={post.title}
             key={i}
-            category={post.category?.title}
-            image={post.coverImage}
+            number={i}
+            selectedPreview={selectedPreview}
+            setSelectedPreview={setSelectedPreview}
             date={post.date}
-            slug={post.slug}
+            image={post.coverImage}
             excerpt={post.excerpt}
+            category={post.category?.title}
+            title={post.title}
+            slug={post.slug}
           />
         ))}
-      </div>
+      </DraggableCarousel>
     </section>
   )
 }
