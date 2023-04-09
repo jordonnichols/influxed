@@ -1,11 +1,10 @@
 'use client'
-import React, { useState, useEffect } from 'react'
+import React, { useEffect,useState } from 'react'
 import useMobileDetect from 'src/hooks/useMobileDetect'
 
 export default function ScrollDown() {
   const isMobile = useMobileDetect()
   const [isVisible, setIsVisible] = useState(true)
-  const [bounce, setBounce] = useState(false)
 
   const handleClick = () => {
     window.scrollTo({
