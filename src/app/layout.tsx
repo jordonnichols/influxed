@@ -3,12 +3,12 @@ import './(GLOBALS)/global.css'
 
 import { Analytics } from '@vercel/analytics/react'
 import Script from 'next/script'
-import Footer from 'src/app/(layout)/Footer'
+import Footer from 'src/app/(GLOBALS)/components/layout/Footer'
 
 export const metadata = {
-  title: 'influxed',
-  description: 'influxed by Jordon Nichols',
-  icons: {},
+  title: 'Jordon N. | INFLUXED',
+  description:
+    'Delve into a comprehensive collection of reports, studies and posts. Featuring expert opinions, best practices and the best cybersec information.',
 }
 
 export default function RootLayout({
