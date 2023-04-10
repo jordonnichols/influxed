@@ -7,6 +7,9 @@ export default function HomePage() {
   return (
     <>
       <div className="h-screen">
+        <div className="absolute top-1/2 z-50 right-1/2 translate-x-1/2">
+          UNDER CONSTRUCTION
+        </div>
         <HeroHeading />
         <AsciiObject />
         <ScrollDown />
