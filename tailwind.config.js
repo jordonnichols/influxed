@@ -11,6 +11,7 @@ module.exports = {
         cyan: '#79FFE1',
         'blue-500': '#2276FC',
         'yellow-100': '#fef7da',
+        // grey: '#111',
       },
       spacing: {
         28: '7rem',
@@ -35,7 +36,7 @@ module.exports = {
         '14xl': '22rem',
       },
       borderRadius: {
-        '4xl': '64px',
+        '4xl': '88px',
       },
       boxShadow: {
         small: '0 5px 10px rgba(0, 0, 0, 0.12)',

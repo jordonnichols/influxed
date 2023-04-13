@@ -64,7 +64,7 @@ function Knot(props) {
 
 function AsciiRenderer({
   renderIndex = 1,
-  bgColor = '#111',
+  bgColor = '#262626',
   fgColor = '#ef4444',
   characters = ' .:-+*=%@#$&',
   invert = true,

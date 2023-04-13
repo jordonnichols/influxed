@@ -15,7 +15,7 @@ export default function ScrollDown() {
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsVisible(window.scrollY === 0)
+      setIsVisible(window.scrollY < 120)
     }
 
     window.addEventListener('scroll', handleScroll)
@@ -30,7 +30,7 @@ export default function ScrollDown() {
 
   return (
     <div
-      className={`fixed bottom-5 right-1/2 translate-x-1/2 cursor-pointer transition-opacity duration-300 ease-in-out bg-red-500/75 rounded-full p-2 ${
+      className={`fixed bottom-5 right-1/2 translate-x-1/2 cursor-pointer transition-opacity duration-300 ease-in-out border-red-500 border-2 rounded-full p-2 ${
         !isVisible ? '!opacity-0' : ''
       }`}
       onClick={handleClick}
@@ -40,7 +40,7 @@ export default function ScrollDown() {
         width="24"
         height="24"
         fill="currentColor"
-        className="text-white"
+        className="text-white translate-y-0.5"
         viewBox="0 0 16 16"
       >
         <path d="M8 9.5l-5.5-5.5L1 5.5l6.5 6.5L8 12l.5-.5 6.5-6.5L13.5 4 8 9.5z" />
