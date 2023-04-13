@@ -2,9 +2,11 @@ import React from 'react'
 
 export default function Contact() {
   return (
-    <div className="h-[500px] relative">
+    <div className="h-[500px] relative mb-16 max-w-full">
       <div className="absolute bottom-1/2 right-1/2 translate-x-1/2 translate-y-1/2">
-        <p className="text-8xl font-light">Let's get in touch!</p>
+        <p className="lg:text-8xl text-4xl font-light">
+          Let&apos;s get in touch!
+        </p>
       </div>
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -16,8 +18,8 @@ export default function Contact() {
       >
         <defs>
           <radialGradient id="ffflux-gradient">
-            <stop offset="0%" stop-color="hsl(0, 0%, 0%)"></stop>
-            <stop offset="100%" stop-color="hsl(0, 0%, 0%)"></stop>
+            <stop offset="0%" stopColor="hsl(0, 0%, 0%)"></stop>
+            <stop offset="100%" stopColor="hsl(0, 0%, 0%)"></stop>
           </radialGradient>
           <filter
             id="ffflux-filter"
@@ -27,7 +29,7 @@ export default function Contact() {
             height="140%"
             filterUnits="objectBoundingBox"
             primitiveUnits="userSpaceOnUse"
-            color-interpolation-filters="sRGB"
+            colorInterpolationFilters="sRGB"
           >
             <feTurbulence
               type="fractalNoise"

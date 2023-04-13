@@ -1,4 +1,5 @@
 import Link from 'next/link'
+
 import JordonNichols from '../JordonNichols'
 
 export default function Footer() {
