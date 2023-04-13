@@ -2,9 +2,9 @@ import React from 'react'
 
 export default function Contact() {
   return (
-    <div className="h-[500px] relative mb-16 max-w-full">
+    <div className="h-[500px] relative mb-16 max-w-full overflow-hidden">
       <div className="absolute bottom-1/2 right-1/2 translate-x-1/2 translate-y-1/2">
-        <p className="lg:text-8xl text-4xl font-light">
+        <p className="lg:text-8xl text-4xl font-light text-center">
           Let&apos;s get in touch!
         </p>
       </div>
