@@ -25,6 +25,7 @@ export default function Hero() {
     >
       <HeroHeading />
       <AsciiObject />
+      <div className="z-50 relative">{width > 748 ? '72px' : '48px'}</div>
     </div>
   )
 }
