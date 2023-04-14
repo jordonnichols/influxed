@@ -5,7 +5,7 @@ import JordonNichols from 'src/app/(GLOBALS)/components/JordonNichols'
 const HeroHeading = () => {
   return (
     <>
-      <div className="absolute z-10 duration-100 select-none h-full w-full px-4">
+      <div className="z-10 duration-100 select-none h-full w-full relative">
         <div className="text-center lg:text-lef w-full">
           <h1 className=" 3xl:text-14xl font-bold lg:leading-zero 2xl:text-13xl xl:text-12xl lg:text-11xl inline-block sm:text-center text-7xl leading-none">
             influxed
@@ -16,7 +16,7 @@ const HeroHeading = () => {
           <JordonNichols />
         </h2>
         <div className="w-full absolute bottom-12">
-          <div className="md:w-[500px] w-full flex flex-col gap-2 m-auto ">
+          <div className="md:w-[500px] w-full flex flex-col gap-2 m-auto px-4">
             <p className="md:text-6xl text-2xl font-bold">
               in·flux·ed{' '}
               <span className="font-light md:text-2xl text-base">
@@ -25,11 +25,8 @@ const HeroHeading = () => {
             </p>
             <p className="italic font-light md:text-2xl">adjective</p>
             <p className="font-light md:text-2xl">
-              <span>
-                : characterized by a rapid integration of new ideas, resources,
-                or perspectives, leading to transformative changes or
-                innovations.
-              </span>
+              : characterized by a rapid integration of new ideas, resources, or
+              perspectives, leading to transformative changes or innovations.
             </p>
             <p className="md:text-2xl pl-6">
               <span className="font-bold">·</span>{' '}
