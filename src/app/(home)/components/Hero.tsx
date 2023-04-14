@@ -2,7 +2,7 @@
 import { useEffect, useState } from 'react'
 
 import AsciiObject from './AsciiObject'
-import HeroHeading from './HeroText'
+import HeroText from './HeroText'
 
 export default function Hero() {
   const [width, setWidth] = useState(0)
@@ -18,12 +18,11 @@ export default function Hero() {
   }, [])
   return (
     <div
-      className="relative"
       style={{
         height: `calc(100vh - ${width > 748 ? '72px' : '48px'})`,
       }}
     >
-      <HeroHeading />
+      <HeroText width={width} />
       <AsciiObject />
       <div className="z-50 relative">{width > 748 ? '72px' : '48px'}</div>
     </div>
