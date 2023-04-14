@@ -44,7 +44,7 @@ export default function Reports() {
   }, [])
 
   return (
-    <div className="h-[100dvh] w-full flex flex-col justify-center bg-neutral-800 z-20 relative">
+    <div className="h-screen w-full flex flex-col justify-center bg-neutral-800 z-20 relative">
       <div
         className="max-w-[1232px] m-auto lg:overflow-visible overflow-hidden w-full"
         ref={containerRef}
