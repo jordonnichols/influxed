@@ -8,7 +8,7 @@ import ScrollDown from './components/ScrollDown'
 export default function HomePage() {
   return (
     <>
-      <div className="h-[100dvh]">
+      <div className="h-[100dvh] bg-neutral-800">
         <HeroHeading />
         <AsciiObject />
         <ScrollDown />
