@@ -5,7 +5,7 @@ import AsciiObject from './AsciiObject'
 import HeroText from './HeroText'
 
 export default function Hero() {
-  const [width, setWidth] = useState(0)
+  const [width, setWidth] = useState(window.innerWidth)
 
   useEffect(() => {
     const handleResize = () => {
