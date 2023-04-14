@@ -4,6 +4,7 @@ import './(GLOBALS)/global.css'
 import { Analytics } from '@vercel/analytics/react'
 import Script from 'next/script'
 import Footer from 'src/app/(GLOBALS)/components/layout/Footer'
+import Navigation from './(GLOBALS)/components/layout/Navigation'
 
 export const metadata = {
   title: 'Jordon N. | INFLUXED',
@@ -40,6 +41,7 @@ export default function RootLayout({
         <link rel="icon" href="/favicon.ico" />
       </head>
       <body>
+        <Navigation />
         <main>{children}</main>
         <Footer />
       </body>

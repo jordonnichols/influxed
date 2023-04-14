@@ -7,7 +7,7 @@ import Reports from './components/Reports'
 export default function HomePage() {
   return (
     <>
-      <div className="h-screen">
+      <div className="relative" style={{ height: 'calc(100vh - 77px)' }}>
         <HeroHeading />
         <AsciiObject />
       </div>
