@@ -62,7 +62,7 @@ declare module '@react-three/fiber' {
 extend({ TextGeometry })
 function TextMesh(props) {
   const ref = useRef<Mesh>()
-  const font = new FontLoader().parse('myFont')
+  const font = new FontLoader().parse('')
 
   return (
     <mesh {...props} ref={ref}>
@@ -91,7 +91,7 @@ function Knot(props) {
 function AsciiRenderer({
   renderIndex = 1,
   bgColor = '#111',
-  fgColor = '#ff6c6c',
+  fgColor = '#ef4444',
   characters = ' .:-+*=%@#$&',
   invert = true,
   color = false,
