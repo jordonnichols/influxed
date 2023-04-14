@@ -1,9 +1,17 @@
 'use client'
 import { OrbitControls } from '@react-three/drei'
-import { Canvas, useFrame, useThree } from '@react-three/fiber'
+import {
+  Canvas,
+  Object3DNode,
+  extend,
+  useFrame,
+  useThree,
+} from '@react-three/fiber'
 import { useEffect, useLayoutEffect, useMemo, useRef } from 'react'
 import { Mesh } from 'three'
 import { AsciiEffect } from 'three-stdlib'
+import { FontLoader } from 'three/examples/jsm/loaders/FontLoader'
+import { TextGeometry } from 'three/examples/jsm/geometries/TextGeometry'
 
 export default function AsciiObject() {
   return (
@@ -46,6 +54,24 @@ function ProgressBar({ progress }) {
   )
 }
 
+declare module '@react-three/fiber' {
+  interface ThreeElements {
+    textGeometry: Object3DNode<TextGeometry, typeof TextGeometry>
+  }
+}
+extend({ TextGeometry })
+function TextMesh(props) {
+  const ref = useRef<Mesh>()
+  const font = new FontLoader().parse('myFont')
+
+  return (
+    <mesh {...props} ref={ref}>
+      <textGeometry args={['fluxd', { font, size: 0.1, height: 0.5 }]} />
+      <meshLambertMaterial />
+    </mesh>
+  )
+}
+
 function Knot(props) {
   const ref = useRef<Mesh>()
 
@@ -64,8 +90,8 @@ function Knot(props) {
 
 function AsciiRenderer({
   renderIndex = 1,
-  bgColor = '#262626',
-  fgColor = '#ef4444',
+  bgColor = '#111',
+  fgColor = '#ff6c6c',
   characters = ' .:-+*=%@#$&',
   invert = true,
   color = false,

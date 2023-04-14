@@ -8,10 +8,9 @@ import ScrollDown from './components/ScrollDown'
 export default function HomePage() {
   return (
     <>
-      <div className="h-screen bg-neutral-800">
+      <div className="h-screen">
         <HeroHeading />
         <AsciiObject />
-        <ScrollDown />
       </div>
       <AboutMe />
       <Reports />
