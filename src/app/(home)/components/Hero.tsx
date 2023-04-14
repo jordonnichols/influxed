@@ -24,7 +24,6 @@ export default function Hero() {
     >
       <HeroText width={width} />
       <AsciiObject />
-      <div className="z-50 relative">{width > 748 ? '72px' : '48px'}</div>
     </div>
   )
 }
