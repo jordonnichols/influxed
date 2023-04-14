@@ -15,7 +15,7 @@ const HeroHeading = () => {
           <span className="font-light">developments, powered by </span>{' '}
           <JordonNichols />
         </h2>
-        <div className="w-full absolute bottom-12">
+        <div className="w-full absolute lg:bottom-12 bottom-4">
           <div className="md:w-[500px] w-full flex flex-col gap-2 m-auto px-4">
             <p className="md:text-6xl text-2xl font-bold">
               in·flux·ed{' '}
