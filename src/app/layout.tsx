@@ -4,6 +4,7 @@ import './(GLOBALS)/global.css'
 import { Analytics } from '@vercel/analytics/react'
 import Script from 'next/script'
 import Footer from 'src/app/(GLOBALS)/components/layout/Footer'
+
 import Navigation from './(GLOBALS)/components/layout/Navigation'
 
 export const metadata = {

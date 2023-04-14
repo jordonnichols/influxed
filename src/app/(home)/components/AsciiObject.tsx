@@ -2,16 +2,16 @@
 import { OrbitControls } from '@react-three/drei'
 import {
   Canvas,
-  Object3DNode,
   extend,
+  Object3DNode,
   useFrame,
   useThree,
 } from '@react-three/fiber'
 import { useEffect, useLayoutEffect, useMemo, useRef } from 'react'
 import { Mesh } from 'three'
-import { AsciiEffect } from 'three-stdlib'
-import { FontLoader } from 'three/examples/jsm/loaders/FontLoader'
 import { TextGeometry } from 'three/examples/jsm/geometries/TextGeometry'
+import { FontLoader } from 'three/examples/jsm/loaders/FontLoader'
+import { AsciiEffect } from 'three-stdlib'
 
 export default function AsciiObject() {
   return (

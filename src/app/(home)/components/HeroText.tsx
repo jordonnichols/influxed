@@ -7,11 +7,11 @@ const HeroHeading = () => {
     <>
       <div className="z-10 absolute top-0 right-1/2 translate-x-1/2 w-full">
         <div className="text-center lg:text-lef w-full">
-          <h1 className=" 3xl:text-14xl font-bold lg:leading-zero 2xl:text-13xl xl:text-12xl lg:text-11xl inline-block sm:text-center text-7xl leading-none">
+          <h1 className=" 3xl:text-14xl font-bold lg:leading-zero 2xl:text-13xl xl:text-12xl lg:text-11xl inline-block sm:text-center md:text-10xl sm:text-8xl text-7xl leading-none">
             influxed
           </h1>
         </div>
-        <h2 className="lg:text-lef lg:text-3xl font-bold leading-zero text-center text-base 2xl:ml-5 2xl:text-5xl lg:ml-3">
+        <h2 className="lg:text-lef lg:text-3xl font-bold leading-zero text-center text-base 2xl:ml-5 2xl:text-5xl md:text-2xl lg:ml-3">
           <span className="font-light">developments, powered by </span>{' '}
           <JordonNichols />
         </h2>
