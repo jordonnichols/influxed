@@ -18,7 +18,7 @@ export default function AboutMe() {
               perspectives, leading to transformative changes or innovations.
             </span>
           </p>
-          <p className="font-light md:text-2xl pl-6">
+          <p className="md:text-2xl pl-6">
             <span className="font-bold">·</span>{' '}
             <span className="italic">influxed </span>
             developments
