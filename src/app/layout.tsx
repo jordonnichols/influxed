@@ -8,7 +8,7 @@ import Footer from 'src/app/(GLOBALS)/components/layout/Footer'
 import Navigation from './(GLOBALS)/components/layout/Navigation'
 
 export const metadata = {
-  title: 'Jordon N. | INFLUXED',
+  title: 'INFLUXED Developments',
   description:
     'Delve into a comprehensive collection of reports, studies and posts. Featuring expert opinions, best practices and the best cybersec information.',
 }
