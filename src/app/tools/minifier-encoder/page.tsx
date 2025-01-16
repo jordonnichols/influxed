@@ -6,6 +6,7 @@ import { minify } from 'terser'
 export default function MinifierEncoderPage() {
   const [encodeInput, setEncodeInput] = useState('')
   const [encodedOutput, setEncodedOutput] = useState('')
+  const [error, setError] = useState('')
 
   // Helper to select all text when a user clicks the read-only textarea
   function selectAllText(e: React.MouseEvent<HTMLTextAreaElement>) {
@@ -17,6 +18,7 @@ export default function MinifierEncoderPage() {
   function clearAll() {
     setEncodeInput('')
     setEncodedOutput('')
+    setError('')
   }
 
   // Whenever "encodeInput" changes, minify + convert to comma-separated char codes
@@ -31,8 +33,9 @@ export default function MinifierEncoderPage() {
         const result = await minify(encodeInput)
         const minifiedCode = result.code ?? encodeInput
         setEncodedOutput(encodeToCharCode(minifiedCode))
+        setError('')
       } catch (err) {
-        console.error('Minification failed:', err)
+        setError(err.message)
       }
     })()
   }, [encodeInput])
@@ -64,7 +67,7 @@ export default function MinifierEncoderPage() {
           placeholder="Encoded result will appear here"
           className="w-full h-48 resize-none bg-gray-100 rounded-md p-2"
         />
-
+        {error && <p>{error}</p>}
         <button
           onClick={clearAll}
           className="bg-gray-200 text-gray-800 px-4 py-2 rounded-md font-medium"
