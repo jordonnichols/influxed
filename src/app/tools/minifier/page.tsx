@@ -34,6 +34,7 @@ export default function MinifierPage() {
         console.group(result)
         const minifiedCode = result.code ?? encodeInput
         setEncodedOutput(minifiedCode)
+        setError('')
       } catch (err) {
         setError(err.message)
       }
