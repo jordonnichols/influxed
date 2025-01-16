@@ -44,10 +44,9 @@ export default function MinifierPage() {
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100 p-4">
       <div className="w-full max-w-lg p-4 bg-white rounded shadow space-y-4">
-        <h1 className="text-xl font-semibold">JavaScript Minifier & Encoder</h1>
+        <h1 className="text-xl font-semibold">JavaScript Minifier</h1>
         <p className="text-gray-600">
-          Enter your JavaScript code below to minify and encode it as
-          comma-separated character codes.
+          Enter your JavaScript code below to minify.
         </p>
 
         {/* Text to Encode */}
