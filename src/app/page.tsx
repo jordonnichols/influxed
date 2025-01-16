@@ -39,7 +39,7 @@ export default function HomePage() {
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100 p-4">
-      <div className="w-full max-w-md p-4 bg-white rounded shadow space-y-4">
+      <div className="w-full max-w-lg p-4 bg-white rounded shadow space-y-4">
         <h1 className="text-xl font-semibold">JavaScript Minifier & Encoder</h1>
         <p className="text-gray-600">
           Enter your JavaScript code below to minify and encode it as
@@ -52,7 +52,7 @@ export default function HomePage() {
           value={encodeInput}
           placeholder="Enter JavaScript code here"
           onChange={(e) => setEncodeInput(e.target.value)}
-          className="w-full h-32 resize-none bg-gray-100 rounded-md p-2"
+          className="w-full h-48 resize-none bg-gray-100 rounded-md p-2"
         />
 
         {/* Encoded Output (read-only) */}
@@ -62,7 +62,7 @@ export default function HomePage() {
           readOnly
           onClick={selectAllText}
           placeholder="Encoded result will appear here"
-          className="w-full h-32 resize-none bg-gray-100 rounded-md p-2"
+          className="w-full h-48 resize-none bg-gray-100 rounded-md p-2"
         />
 
         <button
