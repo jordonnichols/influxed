@@ -4,9 +4,9 @@ import { Analytics } from '@vercel/analytics/react'
 import Script from 'next/script'
 
 export const metadata = {
-  title: 'INFLUXED Developments',
+  title: 'nothing here...',
   description:
-    'Delve into a comprehensive collection of reports, studies and posts. Featuring expert opinions, best practices and the best cybersec information.',
+    'why are you here?',
 }
 
 export default function RootLayout({
