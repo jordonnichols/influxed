@@ -8,6 +8,9 @@ export default function HomePage() {
         <a href="/tools/minifier" className="hover:underline">
           JS Minifier
         </a>
+        <a href="/tools/commands" className="hover:underline">
+          Commands
+        </a>
       </div>
     </div>
   )
