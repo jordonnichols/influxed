@@ -13,7 +13,7 @@ USAGE
 
 
 # Hide the powershell console (1 = yes)
-$hide = 1
+$hide = 0
 
 [Console]::BackgroundColor = "Black"
 Clear-Host
