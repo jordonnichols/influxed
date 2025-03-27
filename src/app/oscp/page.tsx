@@ -1,22 +1,33 @@
-import type { FC } from 'react'
+import { promises as fs } from 'fs'
+import path from 'path'
 import ReactMarkdown from 'react-markdown'
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
 import { vscDarkPlus } from 'react-syntax-highlighter/dist/cjs/styles/prism'
 import remarkGfm from 'remark-gfm'
+import rehypeRaw from 'rehype-raw'
 
 export default async function ReadmePage() {
-  const content = await getReadmeContent()
+  const filePath = path.join(
+    process.cwd(),
+    'public',
+    'assets',
+    'oscp_cheatsheat.txt'
+  )
+
+  // Read the file contents
+  const content = await fs.readFile(filePath, 'utf-8')
 
   return (
     <div className="min-h-screen bg-zinc-900 text-zinc-100">
       <div className="container mx-auto px-4 py-8">
-        <div className="flex justify-between items-center mb-6">
+        {/* <div className="flex justify-between items-center mb-6">
           <h1 className="text-3xl font-bold text-zinc-100">README Viewer</h1>
-        </div>
+        </div> */}
         <div className="bg-zinc-800 rounded-lg shadow-lg p-6">
           <div className="prose prose-invert max-w-none">
             <ReactMarkdown
               remarkPlugins={[remarkGfm]}
+              rehypePlugins={[rehypeRaw]}
               components={{
                 code({
                   node,
@@ -122,57 +133,4 @@ export default async function ReadmePage() {
       </div>
     </div>
   )
-}
-
-async function getReadmeContent() {
-  try {
-    // Using a sample README content as fallback in case fetch fails
-    const sampleReadme = `# Sample README
-    
-## Introduction
-
-This is a sample README file that's displayed when the external fetch fails.
-
-### Features
-
-- Markdown rendering
-- Syntax highlighting
-- Dark theme
-
-\`\`\`javascript
-// Sample code block
-function helloWorld() {
-  console.log("Hello, world!");
-}
-\`\`\`
-
-> This is a blockquote
-
-| Header 1 | Header 2 |
-| -------- | -------- |
-| Cell 1   | Cell 2   |
-| Cell 3   | Cell 4   |
-
-`
-
-    try {
-      // Try to fetch the README from GitHub
-      const response = await fetch(
-        'https://influxed.io/assets/oscp_cheatsheat.md'
-      )
-
-      if (!response.ok) {
-        throw new Error(`Failed to fetch README: ${response.status}`)
-      }
-
-      return await response.text()
-    } catch (fetchError) {
-      console.error('Error fetching README:', fetchError)
-      // Return the sample README if fetch fails
-      return sampleReadme
-    }
-  } catch (error) {
-    console.error('Error in getReadmeContent:', error)
-    return '# Error\n\nThere was an error loading the README content.'
-  }
 }
