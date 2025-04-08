@@ -847,6 +847,8 @@ wpscan --url "target" --enumerate vp,u,vt,tt --follow-redirection --verbose --lo
 
 # Add Wpscan API to get the details of vulnerabilties.
 wpscan --url http://alvida-eatery.org/ --api-token NjnoSGZkuWDve0fDjmmnUNb1ZnkRw6J2J1FvBsVLPkA 
+rwxsw8Nn8mIZBfd6jJOJNEq5NPnf2iR68Pvq4TygFN0
+KiOJliOTN4wf2HV7AfNLysnictNxF5v7bCZYJ9gTrNg
 
 #Accessing Wordpress shell
 http://10.10.67.245/retro/wp-admin/theme-editor.php?file=404.php&theme=90s-retro
